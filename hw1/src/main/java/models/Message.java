@@ -9,7 +9,7 @@ public class Message {
   private String message;
   
   /**
-   * Constructor for Message
+   * Constructor for Message.
    */
   public Message() {
     moveValidity = true;
@@ -18,6 +18,7 @@ public class Message {
   }
 
   /**
+   * Getter for moveValidity.
    * @return the moveValidity
    */
   public boolean isMoveValidity() {
@@ -25,6 +26,7 @@ public class Message {
   }
 
   /**
+   * Setter for moveValidity.
    * @param moveValidity the moveValidity to set
    */
   public void setMoveValidity(boolean moveValidity) {
@@ -32,6 +34,7 @@ public class Message {
   }
 
   /**
+   * Getter for code.
    * @return the code
    */
   public int getCode() {
@@ -39,6 +42,7 @@ public class Message {
   }
 
   /**
+   * Setter for code.
    * @param code the code to set
    */
   public void setCode(int code) {
@@ -46,6 +50,7 @@ public class Message {
   }
 
   /**
+   * Getter for message.
    * @return the message
    */
   public String getMessage() {
@@ -53,6 +58,7 @@ public class Message {
   }
 
   /**
+   * Setter for message.
    * @param message the message to set
    */
   public void setMessage(String message) {

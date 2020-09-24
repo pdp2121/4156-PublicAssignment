@@ -17,7 +17,7 @@ public class GameBoard {
   private boolean isDraw;
 
   /**
-   * Constructor for GameBoard
+   * Constructor for GameBoard.
    */
   public GameBoard() {
     gameStarted = false;
@@ -28,6 +28,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for p1.
    * @return the p1
    */
   public Player getP1() {
@@ -35,6 +36,7 @@ public class GameBoard {
   }
 
   /**
+   * Setter for p1.
    * @param p1 the p1 to set
    */
   public void setP1(Player p1) {
@@ -42,6 +44,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for p2.
    * @return the p2
    */
   public Player getP2() {
@@ -49,6 +52,7 @@ public class GameBoard {
   }
 
   /**
+   * Setter for p2.
    * @param p2 the p2 to set
    */
   public void setP2(Player p2) {
@@ -56,6 +60,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for gameStarted.
    * @return the gameStarted
    */
   public boolean isGameStarted() {
@@ -63,6 +68,7 @@ public class GameBoard {
   }
 
   /**
+   * Setter for gameStarted.
    * @param gameStarted the gameStarted to set
    */
   public void setGameStarted(boolean gameStarted) {
@@ -70,6 +76,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for turn.
    * @return the turn
    */
   public int getTurn() {
@@ -77,6 +84,7 @@ public class GameBoard {
   }
 
   /**
+   * Setter for turn.
    * @param turn the turn to set
    */
   public void setTurn(int turn) {
@@ -84,6 +92,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for boardState.
    * @return the boardState
    */
   public char[][] getBoardState() {
@@ -91,6 +100,7 @@ public class GameBoard {
   }
 
   /**
+   * Setter for boardState.
    * @param boardState the boardState to set
    */
   public void setBoardState(char[][] boardState) {
@@ -98,6 +108,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for winner.
    * @return the winner
    */
   public int getWinner() {
@@ -105,6 +116,7 @@ public class GameBoard {
   }
 
   /**
+   * Setter for winner.
    * @param winner the winner to set
    */
   public void setWinner(int winner) {
@@ -112,6 +124,7 @@ public class GameBoard {
   }
 
   /**
+   * Getter for isDraw.
    * @return the isDraw
    */
   public boolean isDraw() {
@@ -119,25 +132,19 @@ public class GameBoard {
   }
 
   /**
+   * Setter for isDraw.
    * @param isDraw the isDraw to set
    */
   public void setDraw(boolean isDraw) {
     this.isDraw = isDraw;
   }
-  /**
-   * 
-   * @param x
-   * @param y
-   * @return
-   */
+
   
   /**
-   * 
-   * @param x
-   * @param y
-   * @param playerId
-   * @return boolean
-   * @apiNote check move validity
+   * Decide whether a move is valid in current state.
+   * @param x coordinate and y coordinate of a player's move and the player's Id.
+   * @return boolean whether the move is valid or not.
+   * @apiNote check move validity.
    */
   public boolean isValid(int x, int y, int playerId) {
     
@@ -148,12 +155,10 @@ public class GameBoard {
   }
   
   /**
-   * 
-   * @param x
-   * @param y
-   * @param playerId
-   * @return String
-   * @apiNote return a message for invalid move
+   * Return a message for invalid move.
+   * @param x coordinate and y coordinate of a player's move and the player's Id.
+   * @return String message.
+   * @apiNote 
    */
   public String messageInvalid(int x, int y, int playerId) {
     String log = "";
@@ -167,11 +172,8 @@ public class GameBoard {
   }
   
   /**
-   * 
-   * @param x
-   * @param y
-   * @param playerId
-   * @apiNote check for winner for each valid move
+   * Check for winner for each valid move.
+   * @param x coordinate and y coordinate of a player's move and the player's Id.
    */
   public void checkWin(int x, int y, int playerId) {
     // check column
@@ -218,9 +220,8 @@ public class GameBoard {
     }
   }
   
-  /**
-   * 
-   * @apiNote check for draw
+  /** Check for draw at every move.
+   * @return boolean whether the game is a draw.
    */
   public boolean checkDraw() {
     //return false if the game has a winner

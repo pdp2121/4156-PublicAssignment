@@ -9,6 +9,7 @@ public class Move {
   private int moveY;
 
   /**
+   * Getter for player.
    * @return the player
    */
   public Player getPlayer() {
@@ -16,6 +17,7 @@ public class Move {
   }
 
   /**
+   * Setter for player.
    * @param player the player to set
    */
   public void setPlayer(Player player) {
@@ -23,6 +25,7 @@ public class Move {
   }
 
   /**
+   * Getter for moveX.
    * @return the moveX
    */
   public int getMoveX() {
@@ -30,6 +33,7 @@ public class Move {
   }
 
   /**
+   * Setter for moveX.
    * @param moveX the moveX to set
    */
   public void setMoveX(int moveX) {
@@ -37,6 +41,7 @@ public class Move {
   }
 
   /**
+   * Getter for moveY.
    * @return the moveY
    */
   public int getMoveY() {
@@ -44,6 +49,7 @@ public class Move {
   }
 
   /**
+   * Setter for moveY.
    * @param moveY the moveY to set
    */
   public void setMoveY(int moveY) {
