@@ -36,6 +36,8 @@ class PlayGame {
     // newgame end points
     app.get("/newgame", ctx -> {
       ctx.redirect("tictactoe.html");
+      //reset the gameboard if needed.
+      gameboard = new GameBoard();
     });
     
     // startgame end points
