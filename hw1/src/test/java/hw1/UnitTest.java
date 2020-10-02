@@ -8,8 +8,16 @@ import org.junit.jupiter.api.Test;
 class UnitTest {
   
   GameBoard gameboard = new GameBoard();
+  
+  @Test
+  //Test first condition of isValid: make a move before game started.
+  void testValidBeforeStartMove() {
+    boolean beforeStartMove = gameboard.isValid(0, 1, 1);
+    assertEquals(false, beforeStartMove);
+  }
 
   @Test
+  //Test second condition of isValid: make a move on an occupied position.
   void testValidUnoccuppiedMove() {
     char[][] board = {{'\u0000', '\u0000', '\u0000'},
         {'\u0000', 'X', '\u0000'},
@@ -23,12 +31,25 @@ class UnitTest {
   }
   
   @Test
+  //Test third condition of isValid: make a move when not on turn.
   void testValidPlayerMove() {
+    gameboard.setGameStarted(true);
     boolean incorrectPlayerMove = gameboard.isValid(0, 1, 2);
     assertEquals(false, incorrectPlayerMove);
   }
   
   @Test
+  //Test message for first condition of messageInvalid: make a move before game started.
+  void testValidMsgBeforeStartMove() {
+    String incorrectPlayerMsg = gameboard.messageInvalid(0, 1, 1);
+    gameboard.setGameStarted(true);
+    String correctPlayerMsg = gameboard.messageInvalid(0, 1, 1);
+    assertEquals("", correctPlayerMsg);
+    assertEquals("Please wait for both players to join!", incorrectPlayerMsg);
+  }
+  
+  @Test
+  //Test message for second condition of messageInvalid: make a move on an occupied position.
   void testValidMsgUnoccuppiedMove() {
     char[][] board = {{'\u0000', '\u0000', '\u0000'},
         {'\u0000', 'X', '\u0000'},
@@ -42,6 +63,7 @@ class UnitTest {
   }
   
   @Test
+  //Test message for third condition of messageInvalid: make a move when not on turn.
   void testValidMsgPlayerMove() {
     gameboard.setTurn(1);
     gameboard.setGameStarted(true);
@@ -52,6 +74,7 @@ class UnitTest {
   }
   
   @Test
+  // Test for first condition of checkWin: row
   void checkWinRow() {
     char[][] board = {{'\u0000', '\u0000', '\u0000'},
         {'X', 'X', 'X'},
@@ -63,6 +86,7 @@ class UnitTest {
   }
   
   @Test
+  //Test for second condition of checkWin: column.
   void checkWinColumn() {
     char[][] board = {{'\u0000', 'O', '\u0000'},
         {'X', 'O', 'X'},
@@ -74,6 +98,7 @@ class UnitTest {
   }
   
   @Test
+  //Test for third condition of checkWin: diagonal.
   void checkWinDiagonal() {
     char[][] board = {{'X', '\u0000', '\u0000'},
         {'O', 'X', '\u0000'},
@@ -85,6 +110,7 @@ class UnitTest {
   }
   
   @Test
+  //Test for forth condition of checkWin: reverse diagonal.
   void checkWinReverseDiagonal() {
     char[][] board = {{'X', '\u0000', 'O'},
         {'X', 'O', '\u0000'},
@@ -96,6 +122,7 @@ class UnitTest {
   }
   
   @Test
+  //Test for first condition of checkDraw: no player has won.
   void checkDrawGameWon() {
     char[][] board = {{'X', '\u0000', 'O'},
         {'X', 'O', '\u0000'},
@@ -107,6 +134,7 @@ class UnitTest {
   }
   
   @Test
+  //Test for second condition of checkDraw: no more move could be made.
   void checkDrawBlank() {
     char[][] board = {{'O', 'X', 'O'},
         {'X', 'O', '\u0000'},
