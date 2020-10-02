@@ -9,14 +9,14 @@ import models.Message;
 import models.Player;
 import org.eclipse.jetty.websocket.api.Session;
 
-class PlayGame {
+public class PlayGame {
 
   private static final int PORT_NUMBER = 8080;
 
   private static Javalin app;
   
   private static GameBoard gameboard = new GameBoard();
-  private static Gson gsonLib = new Gson();
+  public static final Gson gsonLib = new Gson();
   
 
   /** Main method of the application.
@@ -27,17 +27,18 @@ class PlayGame {
     app = Javalin.create(config -> {
       config.addStaticFiles("/public");
     }).start(PORT_NUMBER);
-
-    // Test Echo Server
-    app.post("/echo", ctx -> {
-      ctx.result(ctx.body());
-    });
     
     // newgame end points
     app.get("/newgame", ctx -> {
       ctx.redirect("tictactoe.html");
       //reset the gameboard if needed.
       gameboard = new GameBoard();
+    });
+    
+    app.get("/getgameboard", ctx -> {
+      String jsonGameBoard = gsonLib.toJson(gameboard);
+      ctx.result(jsonGameBoard);
+      System.out.println(ctx.body());
     });
     
     // startgame end points
@@ -53,7 +54,6 @@ class PlayGame {
       
       // send player1 to gameboard
       gameboard.setP1(player1);
-      
       //send gameboard to UI
       String jsonGameBoard = gsonLib.toJson(gameboard);
       ctx.result(jsonGameBoard);

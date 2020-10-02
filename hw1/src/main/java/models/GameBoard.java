@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Arrays;
+
 public class GameBoard {
 
   private Player p1;
@@ -20,6 +22,8 @@ public class GameBoard {
    * Constructor for GameBoard.
    */
   public GameBoard() {
+    p1 = new Player();
+    p2 = new Player();
     gameStarted = false;
     turn = 1;
     boardState = new char[3][3];
@@ -96,7 +100,7 @@ public class GameBoard {
    * @return the boardState
    */
   public char[][] getBoardState() {
-    return boardState;
+    return (char[][]) boardState.clone();
   }
 
   /**
@@ -104,7 +108,7 @@ public class GameBoard {
    * @param boardState the boardState to set
    */
   public void setBoardState(char[][] boardState) {
-    this.boardState = boardState;
+    this.boardState = (char[][]) boardState.clone();
   }
 
   /**
@@ -147,8 +151,7 @@ public class GameBoard {
    * @apiNote check move validity.
    */
   public boolean isValid(int x, int y, int playerId) {
-    
-    if (this.boardState[x][y] == '\u0000' && playerId == this.turn) {
+    if (this.boardState[x][y] == '\u0000' && playerId == this.turn && this.gameStarted == true) {
       return true;
     }
     return false;
@@ -167,6 +170,9 @@ public class GameBoard {
     }
     if (playerId != this.turn) {
       log = "Please wait for your turn!";
+    }
+    if (this.gameStarted == false) {
+      log = "Please wait for both players to join!";
     }
     return log;
   }
